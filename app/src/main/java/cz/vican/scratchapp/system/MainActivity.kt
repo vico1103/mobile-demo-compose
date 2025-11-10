@@ -22,7 +22,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            NavGraph()
+            ScratchAppTheme {
+                NavGraph()
+            }
+
+
 //            ScratchAppTheme {
 //                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 //                    Greeting(

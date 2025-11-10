@@ -3,6 +3,7 @@ package cz.vican.scratchapp
 import android.app.Application
 import cz.vican.scratchapp.di.appModule
 import cz.vican.scratchapp.feature.main.di.mainFeatureModule
+import cz.vican.scratchapp.feature.scratch.di.scratchFeatureModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 
@@ -15,7 +16,8 @@ class ScratchApp : Application() {
             modules(
                 modules = listOf(
                     appModule,
-                    mainFeatureModule
+                    mainFeatureModule,
+                    scratchFeatureModule
                 )
             )
         }

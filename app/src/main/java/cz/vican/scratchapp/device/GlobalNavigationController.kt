@@ -1,11 +1,14 @@
 package cz.vican.scratchapp.device
 
 import cz.vican.scratchapp.feature.main.domain.MainNavigationController
+import cz.vican.scratchapp.feature.scratch.domain.ScratchNavigationController
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 
-internal class GlobalNavigationController : MainNavigationController {
+internal class GlobalNavigationController :
+    MainNavigationController,
+    ScratchNavigationController {
 
     private val mutableEffect = MutableSharedFlow<NavigationEffect>(
         replay = 1,
@@ -20,6 +23,10 @@ internal class GlobalNavigationController : MainNavigationController {
 
     override fun navigateToScratchScreen() {
         mutableEffect.tryEmit(NavigationEffect.ToScratchScreen)
+    }
+
+    override fun navigateBack() {
+        mutableEffect.tryEmit(NavigationEffect.BackScreen)
     }
 
     sealed interface NavigationEffect {
