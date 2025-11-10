@@ -1,6 +1,6 @@
 package cz.vican.scratchapp.feature.main.domain
 
-interface NavigationController {
+interface MainNavigationController {
     fun navigateToScratchScreen()
     fun navigateToActivateScreen()
 }
