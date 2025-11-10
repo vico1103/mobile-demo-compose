@@ -33,6 +33,11 @@ android {
 }
 
 dependencies {
+    implementation(platform(libs.koin.bom))
+    implementation(libs.bundles.koin.deps)
+
+
+    implementation(project(":library:architecture"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
