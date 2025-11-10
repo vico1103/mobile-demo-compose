@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "cz.vican.scratchapp.feature.main"
+    namespace = "cz.vican.scratchapp.library.architecture"
     compileSdk = 36
 
     defaultConfig {
@@ -37,7 +37,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.runtime.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

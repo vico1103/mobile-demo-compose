@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "scratchApp"
 include(":app")
 include(":feature:main")
+include(":library:architecture")
