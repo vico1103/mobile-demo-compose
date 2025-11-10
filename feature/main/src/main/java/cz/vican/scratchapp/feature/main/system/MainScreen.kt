@@ -1,57 +1,70 @@
 package cz.vican.scratchapp.feature.main.system
 
+//import cz.vican.scratchapp.feature.main.presentation.MainViewModel.UiState
+
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.ui.unit.dp
 import cz.vican.scratchapp.feature.main.presentation.MainViewModel
-//import cz.vican.scratchapp.feature.main.presentation.MainViewModel.UiState
-import org.koin.compose.getKoin
-
+import cz.vican.scratchapp.feature.main.presentation.MainViewModel.UiState
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun MainScreen() {
     val viewModel: MainViewModel = koinViewModel()
     val state by viewModel.uiState.collectAsState()
-    val activity = LocalActivity.current
 
-    BackHandler { activity?.finish() }
-    Scaffold { innerPadding ->
-        Column(modifier = Modifier.fillMaxSize().padding(innerPadding)) {
-            Text(text = state.title)
-        }
-    }
+    MainScreenImpl(
+        state,
+        viewModel::onScratchButtonClicked,
+        viewModel::onActivateButtonClicked
+    )
 
-
-    Column(modifier = Modifier.fillMaxSize()) {
-        Text(text = state.title)
-    }
-
-
-
-//    owner?.let {
-//        val viewModel: MainViewModel = koinViewModel(viewModelStoreOwner = owner)
-//    }
-
-//    val viewModel: MainViewModel = koinViewModel()
-
-
-//    MainScreenImpl(state)
 }
 
-//@Composable
-//private fun MainScreenImpl(state: UiState) {
-//    val activity = LocalActivity.current
-//
-//    BackHandler { activity?.finish() }
-//}
+@Composable
+private fun MainScreenImpl(
+    state: UiState,
+    onScratchCardClicked: () -> Unit,
+    onActivateCardClicked: () -> Unit
+) {
+    val activity = LocalActivity.current
+    BackHandler { activity?.finish() }
+    Scaffold { innerPadding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .padding(horizontal = 12.dp)
+        ) {
+            Text(text = state.scratchState)
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 12.dp),
+                onClick = onScratchCardClicked
+            ){
+                Text(text = state.scratchButtonText)
+            }
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 12.dp),
+                onClick = onActivateCardClicked
+            ){
+                Text(text = state.scratchButtonText)
+            }
+        }
+    }
+}
