@@ -1,15 +1,16 @@
 package cz.vican.scratchapp.feature.main.presentation
 
-import cz.vican.scratchapp.feature.main.domain.NavigationController
+import cz.vican.scratchapp.feature.main.domain.MainNavigationController
 import cz.vican.scratchapp.feature.main.presentation.MainViewModel.UiState
 import cz.vican.scratchapp.library.architecture.presentation.AbstractViewModel
 
+
 internal class MainViewModel(
-    private val navigationController: NavigationController
-): AbstractViewModel<UiState>() {
+    private val navigationController: MainNavigationController
+) : AbstractViewModel<UiState>() {
 
     override fun createInitialState(): UiState {
-       return UiState(
+        return UiState(
             title = "Main Screen",
             scratchButtonText = "Scratch Card",
             activateButtonText = "Activate Card"
@@ -19,9 +20,11 @@ internal class MainViewModel(
     fun onScratchButtonClicked() {
         navigationController.navigateToScratchScreen()
     }
+
     fun onActivateButtonClicked() {
         navigationController.navigateToActivateScreen()
     }
+
 
     data class UiState(
         val title: String,
