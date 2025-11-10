@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import cz.vican.scratchapp.device.GlobalNavigationController.NavigationEffect
 import cz.vican.scratchapp.feature.main.system.MainScreen
+import cz.vican.scratchapp.feature.scratch.system.ScratchScreen
 import org.koin.compose.getKoin
 
 @Composable
@@ -21,14 +22,17 @@ internal fun NavGraph(navHostController: NavHostController = rememberNavControll
         composable(NavigationDelegate.MAIN) {
             MainScreen()
         }
+        composable(NavigationDelegate.SCRATCH) {
+            ScratchScreen()
+        }
     }
 
     LaunchedEffect(delegate.effect) {
         delegate.effect.collect { navigationEffect ->
             when (navigationEffect) {
                 NavigationEffect.BackScreen -> navHostController.popBackStack()
-                NavigationEffect.ToActivateScreen,
-                    NavigationEffect.ToScratchScreen -> { /* No-op for now */}
+                NavigationEffect.ToActivateScreen -> {}
+                NavigationEffect.ToScratchScreen -> navHostController.navigate(NavigationDelegate.SCRATCH)
             }
         }
     }
