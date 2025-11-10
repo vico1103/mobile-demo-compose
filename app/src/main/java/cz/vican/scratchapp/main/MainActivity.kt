@@ -1,5 +1,6 @@
-package cz.vican.scratchapp
+package cz.vican.scratchapp.main
 
+import ScratchNewScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,6 +12,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import cz.vican.scratchapp.scratch.system.ScratchCardScreen
+import cz.vican.scratchapp.scratch.system.ScratchScreen
 import cz.vican.scratchapp.ui.theme.ScratchAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,12 +22,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ScratchAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                ScratchNewScreen()
+//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+//                    Greeting(
+//                        name = "Android",
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
+//                }
             }
         }
     }
