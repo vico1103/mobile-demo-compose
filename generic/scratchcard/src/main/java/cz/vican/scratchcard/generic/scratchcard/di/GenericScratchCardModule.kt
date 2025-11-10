@@ -7,7 +7,7 @@ import cz.vican.scratchcard.generic.scratchcard.domain.ScratchCardRepository
 import cz.vican.scratchcard.generic.scratchcard.domain.SetScratchStatusUseCase
 import org.koin.dsl.module
 
-val scratchCardLibraryModule = module {
+val genericScratchCardModule = module {
     single<ScratchCardRepository> { InMemoryScratchCardRepository() }
     factory { LoadScratchStatusUseCase(get()) }
     factory { SetScratchStatusUseCase(get()) }
