@@ -59,6 +59,7 @@ internal class ScratchViewModel(
 
     data class UiState(
         val title: String = "Scratch Screen",
+        val stateTitle: String = "Current Scratch State:",
         val scratchState: String = "",
         val scratchButtonText: String = "Scratch Now"
     ) : IState
