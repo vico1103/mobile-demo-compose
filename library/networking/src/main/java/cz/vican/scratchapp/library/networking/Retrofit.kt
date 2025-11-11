@@ -23,9 +23,7 @@ object Retrofit {
             .addInterceptor(interceptor).build()
     }
 
-    inline fun <reified T> createWebService(
-        okHttpClient: OkHttpClient, moshi: Moshi, url: String
-    ): T {
+    inline fun <reified T> createWebService(okHttpClient: OkHttpClient, moshi: Moshi, url: String): T {
         val retrofit = Retrofit.Builder()
             .baseUrl(url)
             .client(okHttpClient)

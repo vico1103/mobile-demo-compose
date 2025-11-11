@@ -1,5 +1,6 @@
 package cz.vican.scratchapp.device
 
+import cz.vican.scratchapp.feature.activate.domain.ActivateNavigationController
 import cz.vican.scratchapp.feature.main.domain.MainNavigationController
 import cz.vican.scratchapp.feature.scratch.domain.ScratchNavigationController
 import kotlinx.coroutines.channels.BufferOverflow
@@ -8,7 +9,8 @@ import kotlinx.coroutines.flow.asSharedFlow
 
 internal class GlobalNavigationController :
     MainNavigationController,
-    ScratchNavigationController {
+    ScratchNavigationController,
+    ActivateNavigationController {
 
     private val mutableEffect = MutableSharedFlow<NavigationEffect>(
         replay = 1,

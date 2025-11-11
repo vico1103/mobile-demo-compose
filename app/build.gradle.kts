@@ -18,6 +18,12 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    packaging {
+        resources {
+            excludes += arrayOf("META-INF/versions/9/OSGI-INF/MANIFEST.MF")
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -44,6 +50,7 @@ dependencies {
     implementation(libs.bundles.koin.deps)
     implementation(project(":feature:main"))
     implementation(project(":feature:scratch"))
+    implementation(project(":feature:activate"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
